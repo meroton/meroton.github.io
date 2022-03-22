@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Meroton Blog</title>
+        <link>https://meroton.github.io/blog</link>
+        <description>Meroton Blog</description>
+        <lastBuildDate>Tue, 22 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Purpose of the Articles]]></title>
+            <link>https://meroton.github.io/blog/about</link>
+            <guid>about</guid>
+            <pubDate>Tue, 22 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[The purpose of these articles is to have a freeform area discussing ideas, technical issues, solutions and news in an indepth relaxed manner. It is not to serve as reference material, structured reference material should be available in the documentation section.]]></description>
+            <content:encoded><![CDATA[<p>The purpose of these articles is to have a freeform area discussing ideas, technical issues, solutions and news in an indepth relaxed manner. It is not to serve as reference material, structured reference material should be available in the documentation section.</p><p>The article format allows more in depth on discussions for reacurring subjects. In contrast to the documentation published articles aren't changed, if the subject requires a revisit in the future then we publish a new post and add references to the old.</p><p>If you see any errors feel free to submit a pull request at github using the link below.</p>]]></content:encoded>
+            <category>meroton</category>
+        </item>
+    </channel>
+</rss>
