@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[506],{2980:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/buildbarn","name":"buildbarn","count":1,"permalink":"/blog/tags/buildbarn"}')}}]);

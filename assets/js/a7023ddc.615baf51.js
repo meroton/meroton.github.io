@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[713],{3457:function(o){o.exports=JSON.parse('{"/blog/tags/meroton":{"allTagsPath":"/blog/tags","slug":"/blog/tags/meroton","name":"meroton","count":1,"permalink":"/blog/tags/meroton"}}')}}]);
