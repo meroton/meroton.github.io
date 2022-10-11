@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog</id>
     <title>Meroton Blog</title>
-    <updated>2022-08-28T00:00:00.000Z</updated>
+    <updated>2022-10-13T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog"/>
     <subtitle>Meroton Blog</subtitle>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Remote Executioners for the Free Environment]]></title>
+        <id>remote-executors-for-free-tier</id>
+        <link href="https://meroton.github.io/blog/remote-executors-for-free-tier"/>
+        <updated>2022-10-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We've performed some updates to the free tier and our pricing model.]]></summary>
+        <content type="html"><![CDATA[<p>We've performed some updates to the free tier and our pricing model.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="shared-cache">Shared Cache<a class="hash-link" href="#shared-cache" title="Direct link to heading">​</a></h2><p>The free tier has been upgraded into an environment with a 1TB cache and with unlimited 1 Gbps throughput.
+This means that you can use the free tier without worrying about hitting any limits or setup process.</p><p>Do note that while the cached items will only be accessible with the correct api keys,
+the storage area can be reclaimed by anyone.
+I.e. as the cache becomes full your items might be dropped.</p><p>With the current churn we expect any items in the cache last at least a week.
+However, you should always treat items in the cache as something which might be dropped at any moment.
+The purpose and design of the cache is to maximize build performance, not to provide storage.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="shared-executors">Shared executors<a class="hash-link" href="#shared-executors" title="Direct link to heading">​</a></h2><p>New for the free environment is the introduction of remote execution,
+this was previously only available for paying customers.</p><p>If you're using bazel you can simply add the <code>--remote_executor=&lt;...&gt;</code> flag and your builds will be done remotely.</p><p>The free environment has access to 64 shared executors.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="starter-tier">Starter tier<a class="hash-link" href="#starter-tier" title="Direct link to heading">​</a></h2><p>If you need dedicated storage for evaluation purposes we also offer a starter tier.
+The starter tier is a streamlined environment with 100 GB of dedicated cache and access to the same 64 executors as the free tier.</p><p>This allows you to try out remote execution and caching without being disturbed by others.
+While the 100GB dedicated cache will only be used by you and therefore not be overwritten by anyone else's build,
+the cache is still a cache and the system will still drop the cache entries if it determines it is useful for maximizing performance.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="need-more-executors">Need more executors?<a class="hash-link" href="#need-more-executors" title="Direct link to heading">​</a></h2><p>At the moment the starter tier has a fixed amount of shared executors.
+If you need a scalable solution contact us for setting up a custom Buildbarn environment of any size.</p>]]></content>
+        <author>
+            <name>Benjamin Ingberg</name>
+        </author>
+        <category label="meroton" term="meroton"/>
+        <category label="remote execution" term="remote execution"/>
+        <category label="cloud" term="cloud"/>
+        <category label="free tier" term="free tier"/>
+        <category label="starter tier" term="starter tier"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Tips, Tricks & Non-Deterministic Builds]]></title>
         <id>tips-trix-and-nondeterminism</id>

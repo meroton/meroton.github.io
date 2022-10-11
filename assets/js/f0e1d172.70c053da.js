@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[911],{9365:e=>{e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/free-tier","name":"free tier","count":1,"permalink":"/blog/tags/free-tier"}')}}]);
