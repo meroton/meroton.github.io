@@ -13,7 +13,7 @@
             <guid>remote-executors-for-free-tier</guid>
             <pubDate>Thu, 13 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[We've performed some updates to the free tier and our pricing model.]]></description>
-            <content:encoded><![CDATA[<p>We've performed some updates to the free tier and our pricing model.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="shared-cache">Shared Cache<a class="hash-link" href="#shared-cache" title="Direct link to heading">​</a></h2><p>The free tier has been upgraded into an environment with a 1TB cache and with unlimited 1 Gbps throughput.
+            <content:encoded><![CDATA[<p>We've performed some updates to the free tier and our pricing model.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="shared-cache">Shared Cache<a class="hash-link" href="#shared-cache" title="Direct link to heading">​</a></h2><p>The free tier has been upgraded into an environment with a 1TB cache.
 This means that you can use the free tier without worrying about hitting any limits or setup process.</p><p>Do note that while the cached items will only be accessible with the correct api keys,
 the storage area can be reclaimed by anyone.
 I.e. as the cache becomes full your items might be dropped.</p><p>With the current churn we expect any items in the cache last at least a week.
