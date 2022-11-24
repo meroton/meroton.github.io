@@ -4,9 +4,21 @@
         <title>Meroton Blog</title>
         <link>https://meroton.github.io/blog</link>
         <description>Meroton Blog</description>
-        <lastBuildDate>Thu, 13 Oct 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 24 Nov 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[BuildBar at the Meroton Office]]></title>
+            <link>https://meroton.github.io/blog/buildbar-at-meroton-office</link>
+            <guid>buildbar-at-meroton-office</guid>
+            <pubDate>Thu, 24 Nov 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[After BazelCon we've all gotten a bit giddy and you might feel excited how the information presented at BazelCon might impact your development workflow.]]></description>
+            <content:encoded><![CDATA[<p>After BazelCon we've all gotten a bit giddy and you might feel excited how the information presented at BazelCon might impact your development workflow.
+For that purpose we're inviting everyone in the wider bazel community to an open BuildBar at the Meroton offices.</p><p>Come over and digest BazelCon with high level technical discussions of the talks,
+great company, a pleasant atmosphere and also beer.</p><p>Feel welcome to come over this Thursday the first of December from 16 to 20.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="directions">Directions<a class="hash-link" href="#directions" title="Direct link to heading">​</a></h2><p>You'll find us at our Linköping offices at Fridtunagatan 33. Currently there is some construction but follow the red lines and you'll be fine.</p><figure><img alt="" src="/img/office_map.webp"><figcaption>Fridtunagatan 33 Linköping</figcaption></figure>]]></content:encoded>
+            <category>meroton</category>
+            <category>afterwork</category>
+        </item>
         <item>
             <title><![CDATA[Remote Executors for the Free Environment]]></title>
             <link>https://meroton.github.io/blog/remote-executors-for-free-tier</link>

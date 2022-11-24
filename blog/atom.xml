@@ -2,11 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog</id>
     <title>Meroton Blog</title>
-    <updated>2022-10-13T00:00:00.000Z</updated>
+    <updated>2022-11-24T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog"/>
     <subtitle>Meroton Blog</subtitle>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[BuildBar at the Meroton Office]]></title>
+        <id>buildbar-at-meroton-office</id>
+        <link href="https://meroton.github.io/blog/buildbar-at-meroton-office"/>
+        <updated>2022-11-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[After BazelCon we've all gotten a bit giddy and you might feel excited how the information presented at BazelCon might impact your development workflow.]]></summary>
+        <content type="html"><![CDATA[<p>After BazelCon we've all gotten a bit giddy and you might feel excited how the information presented at BazelCon might impact your development workflow.
+For that purpose we're inviting everyone in the wider bazel community to an open BuildBar at the Meroton offices.</p><p>Come over and digest BazelCon with high level technical discussions of the talks,
+great company, a pleasant atmosphere and also beer.</p><p>Feel welcome to come over this Thursday the first of December from 16 to 20.</p><h2 class="anchor anchorWithStickyNavbar_mojV" id="directions">Directions<a class="hash-link" href="#directions" title="Direct link to heading">​</a></h2><p>You'll find us at our Linköping offices at Fridtunagatan 33. Currently there is some construction but follow the red lines and you'll be fine.</p><figure><img alt="" src="/img/office_map.webp"><figcaption>Fridtunagatan 33 Linköping</figcaption></figure>]]></content>
+        <author>
+            <name>Benjamin Ingberg</name>
+        </author>
+        <category label="meroton" term="meroton"/>
+        <category label="afterwork" term="afterwork"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Remote Executors for the Free Environment]]></title>
         <id>remote-executors-for-free-tier</id>
