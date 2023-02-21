@@ -19,7 +19,7 @@ has gotten updates.</p><p>This is a continuation of the
 and is a high level summary of what has happened since April 2022 up to 2023-02-16.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="let-referenceexpandingblobaccess-support-gcs">Let ReferenceExpandingBlobAccess support GCS<a href="#let-referenceexpandingblobaccess-support-gcs" class="hash-link" aria-label="Direct link to Let ReferenceExpandingBlobAccess support GCS" title="Direct link to Let ReferenceExpandingBlobAccess support GCS">​</a></h2><p>ReferenceExpandingBlobAccess already supports S3 so support was extended to Google Cloud Storage buckets.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="support-for-prefetching-virtual-filesystems">Support for prefetching Virtual Filesystems<a href="#support-for-prefetching-virtual-filesystems" class="hash-link" aria-label="Direct link to Support for prefetching Virtual Filesystems" title="Direct link to Support for prefetching Virtual Filesystems">​</a></h2><p>Running workers with Fuse allows inputs for an action
 to be downloaded on demand.
 This significantly reduces the amount of data
-that gets sent to run overspecified actions.
+that gets sent in order to run overspecified actions.
 This however leads to poor performance for actions
 which reads a lot of their inputs synchronously.</p><p>With the prefetcher most of these actions can be recognized
 and data which is likely to be needed
