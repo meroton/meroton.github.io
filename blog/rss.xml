@@ -105,7 +105,7 @@ and is tracked at <a href="https://github.com/bazelbuild/bazel/issues/17366" tar
 Bazel will ask the remote cache which items have already been built.
 Bazel will only schedule build actions for items
 that do not already exist in the cache.
-If running a build without the bytes<sup id="fnref-1-13c049"><a href="#fn-1-13c049" class="footnote-ref">1</a></sup>
+If running a build without the bytes<sup id="fnref-1-061716"><a href="#fn-1-061716" class="footnote-ref">1</a></sup>
 the intermediary results will not be downloaded to the client.</p><p>Should the cached items be evicted
 then Bazel will run into an unrecoverable error.
 It wants the remote system to perform an action using inputs from the cache,
@@ -138,14 +138,14 @@ is to run <code>bazel clean</code>.
 Which is generally considered an anti-pattern.</p><p>If you are using the <a href="https://github.com/buildbarn/bb-clientd#-to-perform-remote-builds-without-the-bytes" target="_blank" rel="noopener noreferrer">bb-clientd</a> <code>--remote_output_service</code>
 to run builds without the bytes
 (an alternative strategy to <code>--remote_download_minimal</code>)
-this will not affect you.</p><div class="footnotes"><hr><ol><li id="fn-1-13c049">When using Bazel with remote execution
+this will not affect you.</p><div class="footnotes"><hr><ol><li id="fn-1-061716">When using Bazel with remote execution
 remote builds are run in a remote server cluster.
 There is therefore no need for each developer
 to download the partial results of build.
 Bazel calls this feature
 <a href="https://blog.bazel.build/2019/05/07/builds-without-bytes.html" target="_blank" rel="noopener noreferrer">Remote Builds Without the Bytes</a>.
 The progress of the feature can be tracked at
-<a href="https://github.com/bazelbuild/bazel/issues/6862" target="_blank" rel="noopener noreferrer">GitHub</a>.<a href="#fnref-1-13c049" class="footnote-backref">↩</a></li></ol></div>]]></content:encoded>
+<a href="https://github.com/bazelbuild/bazel/issues/6862" target="_blank" rel="noopener noreferrer">GitHub</a>.<a href="#fnref-1-061716" class="footnote-backref">↩</a></li></ol></div>]]></content:encoded>
             <category>bazel</category>
             <category>bugs</category>
         </item>
