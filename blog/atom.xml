@@ -13,7 +13,7 @@
         <updated>2023-11-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[This is a continuation of the]]></summary>
         <content type="html"><![CDATA[<p>This is a continuation of the
-<a href="https://meroton.github.io/blog/bb-deploy-updates-2022-04/">previous update article</a>
+<a href="https://meroton.github.io/blog/bb-deployments-updates-2023-02/">previous update article</a>
 and is a high level summary of what has happened in Buildbarn from 2023-02-16 to 2023-11-14.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="added-support-for-jwts-signed-with-rsa">Added support for JWTs signed with RSA<a href="https://meroton.github.io/blog/buildbarn-updates-2023-11#added-support-for-jwts-signed-with-rsa" class="hash-link" aria-label="Direct link to Added support for JWTs signed with RSA" title="Direct link to Added support for JWTs signed with RSA">​</a></h2>
 <p>Support for JWTs signed with RSA has been added.
