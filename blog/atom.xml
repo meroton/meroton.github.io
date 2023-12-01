@@ -2,10 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog</id>
     <title/>
-    <updated>2023-11-21T00:00:00.000Z</updated>
+    <updated>2023-12-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog"/>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Improved Chroot in Buildbarn]]></title>
+        <id>https://meroton.github.io/blog/improved-chroot-in-buildbarn</id>
+        <link href="https://meroton.github.io/blog/improved-chroot-in-buildbarn"/>
+        <updated>2023-12-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We have just started a documentation series]]></summary>
+        <content type="html"><![CDATA[<p>We have just started a documentation series
+describing the Buildbarn <code>chroot</code> runners,
+and how they can be used for hermetic input roots
+that contain all the required tools.
+This includes implementation notes for a "mountat" functionality
+created through the new Linux mount API,
+how you can use this under-documented API,
+and its shortcomings.
+And how this <em>can/will be</em> integrated into Buildbarn,
+with technical descriptions of the workers and runners.</p>
+<p>The first sections are already available, with more to come!</p>
+<p>Sections:</p>
+<ul>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/chroot-in-buildbarn/">Use chroot in Buildbarn</a></li>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/implementing-mountat/">Implement mountat with the new mount API</a></li>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/implementing-unmountat/">Unmount from relative file paths and directory file descriptors</a></li>
+</ul>
+<p>Reference code repository:</p>
+<ul>
+<li><a href="https://github.com/meroton/prototype-mountat/" target="_blank" rel="noopener noreferrer">https://github.com/meroton/prototype-mountat/</a></li>
+</ul>]]></content>
+        <author>
+            <name>Nils Wireklint</name>
+        </author>
+        <category label="linux" term="linux"/>
+        <category label="syscalls" term="syscalls"/>
+        <category label="buildbarn" term="buildbarn"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Updates to Buildbarn as of November 2023]]></title>
         <id>https://meroton.github.io/blog/buildbarn-updates-2023-11</id>
@@ -586,7 +620,7 @@ If you need a scalable solution contact us for setting up a custom Buildbarn env
         <summary type="html"><![CDATA[When you have a remote build and cache cluster it can sometimes be hard to track down what exactly is using all of your building resources. To help with this we have started a tips and trix section in the documentation where we will share methods we use to debug and resolve slow builds.]]></summary>
         <content type="html"><![CDATA[<p>When you have a remote build and cache cluster it can sometimes be hard to track down what exactly is using all of your building resources. To help with this we have started a tips and trix section in the documentation where we will share methods we use to debug and resolve slow builds.</p>
 <p>The first section is about build non-determinism. Ideally your build actions should produce the same output when run with the same input, in practice this is sometimes not the case. If you are lucky a non-deterministic action won't be noticed since the inputs for the non-deterministic action is unchanged it won't be rebuilt.</p>
-<p>If you're not so lucky the non-determinism stems from a bug in the implementation and you should definitiely pay attention to them. But how do you know which if any actions are non-deterministic?</p>
+<p>If you're not so lucky the non-determinism stems from a bug in the implementation and you should definitely pay attention to them. But how do you know which if any actions are non-deterministic?</p>
 <p>This is not trivial but we have added <a href="https://meroton.github.io/docs/tips/non-deterministic-builds/">a server side feature</a> which allows detection of non-determinism with virtually no effort on your part.</p>
 <p>Once activated it reruns a configured fraction of your actions and automatically flags them if they produce different outputs. The scheduling is done outside of your bazel invocation so your build throughput will be unaffected at the cost of an increase in the number of resources consumed. We suggest 1% which will only increase your resource use by a trivial amount but you could of course set it to 100% which would double the cost of your builds.</p>]]></content>
         <author>
