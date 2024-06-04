@@ -96,16 +96,16 @@ and how they can be used for hermetic input roots
 that contain all the required tools.
 This includes implementation notes for a "mountat" functionality
 created through the new Linux mount API,
-how you can use this under-documented API,
+how you can use this under-documented API
 and its shortcomings.
 And how this <em>can/will be</em> integrated into Buildbarn,
 with technical descriptions of the workers and runners.</p>
 <p>The first sections are already available, with more to come!</p>
 <p>Sections:</p>
 <ul>
-<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/chroot-in-buildbarn/">Use chroot in Buildbarn</a></li>
-<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/implementing-mountat/">Implement mountat with the new mount API</a></li>
-<li><a href="https://meroton.github.io/docs/improved-chroot-in-Buildbarn/implementing-unmountat/">Unmount from relative file paths and directory file descriptors</a></li>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-buildbarn/chroot-in-buildbarn/">Use chroot in Buildbarn</a></li>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-buildbarn/implementing-mountat/">Implement mountat with the new mount API</a></li>
+<li><a href="https://meroton.github.io/docs/improved-chroot-in-buildbarn/implementing-unmountat/">Unmount from relative file paths and directory file descriptors</a></li>
 </ul>
 <p>Reference code repository:</p>
 <ul>
@@ -146,7 +146,7 @@ adding <code>{ "strict_limit": "0" }</code> to <code>linux_backing_dev_info_tuna
 will remove the <code>BDI_CAP_STRICTLIMIT</code> flag from the FUSE mount.</p>
 <p>This may improve fileystem performance
 especially when running build actions which
-uses mmap<!-- -->:ed<!-- --> files extensively.</p>
+uses mmap'ed files extensively.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-support-for-injecting-xcode-environment-variables">Add support for injecting Xcode environment variables<a href="https://meroton.github.io/blog/buildbarn-updates-2023-11#add-support-for-injecting-xcode-environment-variables" class="hash-link" aria-label="Direct link to Add support for injecting Xcode environment variables" title="Direct link to Add support for injecting Xcode environment variables">​</a></h2>
 <p>Remote build with macOS may call into locally installed copies of Xcode.
 The path to the local copy of Xcode may vary
@@ -169,7 +169,7 @@ to authenticate access using OAuth2 without involving any other middleware.</p>
 such as draining workers or killing of jobs.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="authentication-using-a-json-web-key-set">Authentication using a JSON Web Key Set<a href="https://meroton.github.io/blog/buildbarn-updates-2023-11#authentication-using-a-json-web-key-set" class="hash-link" aria-label="Direct link to Authentication using a JSON Web Key Set" title="Direct link to Authentication using a JSON Web Key Set">​</a></h2>
 <p>JSON Web Key Sets (JWKS) is a standard format
-which allows us to specificy multiple different encryption keys
+which allows us to specify multiple different encryption keys
 that may have been used to sign our JWT authentication.</p>
 <p>Buildbarn can load the JWKS specification,
 either inline or as a file,
