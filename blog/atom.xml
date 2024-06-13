@@ -2,10 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog</id>
     <title/>
-    <updated>2023-12-22T00:00:00.000Z</updated>
+    <updated>2024-06-13T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog"/>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Summer Buildbar]]></title>
+        <id>https://meroton.github.io/blog/summer-buildbar-2024</id>
+        <link href="https://meroton.github.io/blog/summer-buildbar-2024"/>
+        <updated>2024-06-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Before heads out to summer adventures I'd like to invite everyone to a cool]]></summary>
+        <content type="html"><![CDATA[<p>Before heads out to summer adventures I'd like to invite everyone to a cool
+summer Buildbar. At the Buildbar we'll eat good food, talk about interesting
+technical problems, new developments with Bazel and Buildbarn.</p>
+<p>And also have a few beers.</p>
+<p>Feel welcome to come over this Wednesday the nineteenth of July from 16 to 20.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="directions">Directions<a href="https://meroton.github.io/blog/summer-buildbar-2024#directions" class="hash-link" aria-label="Direct link to Directions" title="Direct link to Directions">​</a></h2>
+<p>You'll find us at our Linköping offices at Fridtunagatan 33. Currently there
+is some ongoing construction but follow the red lines and you'll be fine.</p>
+<figure><img alt="" src="https://meroton.github.io/img/office_map.webp"><figcaption>Fridtunagatan 33 Linköping</figcaption></figure>]]></content>
+        <author>
+            <name>Benjamin Ingberg</name>
+        </author>
+        <category label="meroton" term="meroton"/>
+        <category label="afterwork" term="afterwork"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Automatically Reformat all Commits on a Branch]]></title>
         <id>https://meroton.github.io/blog/Automatically-reformat-all-commits-on-a-branch</id>

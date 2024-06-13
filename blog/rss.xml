@@ -4,10 +4,28 @@
         <title></title>
         <link>https://meroton.github.io/blog</link>
         <description></description>
-        <lastBuildDate>Fri, 22 Dec 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Jun 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Summer Buildbar]]></title>
+            <link>https://meroton.github.io/blog/summer-buildbar-2024</link>
+            <guid>https://meroton.github.io/blog/summer-buildbar-2024</guid>
+            <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Before heads out to summer adventures I'd like to invite everyone to a cool]]></description>
+            <content:encoded><![CDATA[<p>Before heads out to summer adventures I'd like to invite everyone to a cool
+summer Buildbar. At the Buildbar we'll eat good food, talk about interesting
+technical problems, new developments with Bazel and Buildbarn.</p>
+<p>And also have a few beers.</p>
+<p>Feel welcome to come over this Wednesday the nineteenth of July from 16 to 20.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="directions">Directions<a href="https://meroton.github.io/blog/summer-buildbar-2024#directions" class="hash-link" aria-label="Direct link to Directions" title="Direct link to Directions">​</a></h2>
+<p>You'll find us at our Linköping offices at Fridtunagatan 33. Currently there
+is some ongoing construction but follow the red lines and you'll be fine.</p>
+<figure><img alt="" src="https://meroton.github.io/img/office_map.webp"><figcaption>Fridtunagatan 33 Linköping</figcaption></figure>]]></content:encoded>
+            <category>meroton</category>
+            <category>afterwork</category>
+        </item>
         <item>
             <title><![CDATA[Automatically Reformat all Commits on a Branch]]></title>
             <link>https://meroton.github.io/blog/Automatically-reformat-all-commits-on-a-branch</link>
