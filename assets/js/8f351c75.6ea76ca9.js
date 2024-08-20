@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[9312],{8e3:s=>{s.exports=JSON.parse('{"label":"syscalls","permalink":"/blog/tags/syscalls","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

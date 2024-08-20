@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[3316],{4594:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/bazel","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Free form articles describing technical issues, solutions and news from meroton","blogTitle":"Meroton Blog"}')}}]);
