@@ -2,10 +2,60 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog/</id>
     <title/>
-    <updated>2024-06-13T00:00:00.000Z</updated>
+    <updated>2024-09-08T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog/"/>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Introducing Meroton’s New Course: Buildbarn Fundamentals]]></title>
+        <id>https://meroton.github.io/blog/introducing-buildbarn-fundamentals/</id>
+        <link href="https://meroton.github.io/blog/introducing-buildbarn-fundamentals/"/>
+        <updated>2024-09-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[At Meroton, we’ve long provided managed Buildbarn environments to help]]></summary>
+        <content type="html"><![CDATA[<p>At Meroton, we’ve long provided managed Buildbarn environments to help
+development teams streamline their build processes. Now, we’re excited to take
+it a step further with the introduction of our latest offering: Buildbarn
+Fundamentals.</p>
+<p>This new course is designed to empower your team with the knowledge and
+practical skills needed to manage and operate your own Buildbarn environment.
+Whether you're just getting started with remote build execution or looking to
+take control of your infrastructure, this hands-on course will provide you with
+the tools to succeed.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="unlock-the-power-of-buildbarn-with-expert-guidance">Unlock the Power of Buildbarn with Expert Guidance<a href="https://meroton.github.io/blog/introducing-buildbarn-fundamentals/#unlock-the-power-of-buildbarn-with-expert-guidance" class="hash-link" aria-label="Direct link to Unlock the Power of Buildbarn with Expert Guidance" title="Direct link to Unlock the Power of Buildbarn with Expert Guidance">​</a></h2>
+<p><strong>Buildbarn Fundamentals</strong> is more than just a training session; it’s an
+opportunity to set up a production-ready Buildbarn reference cluster in your own
+AWS environment. By participating in the course, your team will not only
+understand what makes Buildbarn tick but also walk away with a fully functional
+Remote Build Environment (RBE) cluster, which you can continue to use or adapt
+to your organization’s needs.</p>
+<p>At Meroton, we believe that mastering the management of remote build
+environments is crucial for modern development workflows. This course is
+designed to be both comprehensive and practical, offering a deep dive into
+Buildbarn while equipping your team with the operational knowledge to
+effectively maintain and scale your infrastructure.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-youll-learn">What You'll Learn<a href="https://meroton.github.io/blog/introducing-buildbarn-fundamentals/#what-youll-learn" class="hash-link" aria-label="Direct link to What You'll Learn" title="Direct link to What You'll Learn">​</a></h2>
+<p>Buildbarn Fundamentals is a hands-on course that teaches participants how to:</p>
+<ul>
+<li>Set up a fully operational Buildbarn cluster in AWS</li>
+<li>Manage and operate Buildbarn clusters independently</li>
+<li>Integrate third-party tools to enhance your build environment and understand
+the needs of consumers</li>
+<li>Optimize caching, remote execution, and troubleshooting with Buildbarn</li>
+</ul>
+<p>By the end of the course, your team will have the skills and confidence to
+self-manage a Buildbarn environment, enabling you to scale and optimize your
+development processes independently.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="more-information">More Information<a href="https://meroton.github.io/blog/introducing-buildbarn-fundamentals/#more-information" class="hash-link" aria-label="Direct link to More Information" title="Direct link to More Information">​</a></h2>
+<p>If you're ready to empower your team with the skills to manage your own
+Buildbarn infrastructure, get in touch! Contact us at <a href="mailto:sales@meroton.com" target="_blank" rel="noopener noreferrer">sales@meroton.com</a> to learn
+more and secure your spot. Or read more at <a href="https://meroton.github.io/services/buildbarn-fundamentals/">Buildbarn Fundamentals</a></p>]]></content>
+        <author>
+            <name>Benjamin Ingberg</name>
+        </author>
+        <category label="buildbarn" term="buildbarn"/>
+        <category label="meroton" term="meroton"/>
+        <category label="course" term="course"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Summer Buildbar]]></title>
         <id>https://meroton.github.io/blog/summer-buildbar-2024/</id>
