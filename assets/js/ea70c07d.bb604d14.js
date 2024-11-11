@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[8732],{6387:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/blog/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":15,"previousPage":"/blog","blogDescription":"Free form articles describing technical issues, solutions and news from meroton","blogTitle":"Meroton Blog"}}')}}]);
