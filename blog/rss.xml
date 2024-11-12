@@ -17,12 +17,14 @@
             <content:encoded><![CDATA[<p>When running a remote cache and execution cluster based on Buildbarn the Key
 Location Map (KLM) is a term that you will run into and it is important to take
 proper care when sizing the KLM and the number of KLM attempts.</p>
-<p>If you are just looking for a ballpark number to get you started, set the
-number of get attempts to 16 and the number of put attempts to 64 and use the
-following table.</p>
-<table><thead><tr><th></th><th>CAS</th><th>AC</th></tr></thead><tbody><tr><td>Average Object Size</td><td>500KB</td><td>1KB</td></tr><tr><td>Storage Size</td><td>1TB</td><td>1GB</td></tr><tr><td>KLM Entries</td><td>8 000 000</td><td>4 000 000</td></tr><tr><td>KLM Size</td><td>528MB</td><td>264MB</td></tr></tbody></table>
-<p>I recommend reading the rest of the article to understand what you are actually
-setting and how to reason about this.</p>
+<p>If you are just looking for a ballpark number to get you started, set the number
+of get attempts to 16 and the number of put attempts to 64 and use the following
+table.</p>
+<table><thead><tr><th></th><th>CAS</th><th>AC</th></tr></thead><tbody><tr><td>Average Object Size</td><td>125KB</td><td>1KB</td></tr><tr><td>Storage Size</td><td>500TB</td><td>1GB</td></tr><tr><td>KLM Entries</td><td>16 000 000</td><td>4 000 000</td></tr><tr><td>KLM Size</td><td>1056MB</td><td>264MB</td></tr></tbody></table>
+<p>These are arbitrarily chosen values which are unlikely to match your actual
+workload. I recommend reading the rest of the article to understand your
+settings and how to reason about this. You can then use the prometheus metrics
+in the end to validate if your settings are a good match for your workload.</p>
 <h1>How does the KLM work?</h1>
 <p>The KLM is a <a href="https://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener noreferrer">hash table</a> which
 describes the position in your storage layer where your desired data is written
@@ -43,7 +45,10 @@ allowed iterations to find our object in one of these slots. When inserting we
 perform a similar solution, namely incrementing the number of attempts whenever
 we encounter a collision but taking care to insert the younger of the colliding
 objects in the colliding slot and pushing the older object forward.</p>
-<p>The number of attempts we allow the KLM to look for a free slot is described by the two parameters <code>key_location_map_maximum_get_attempts</code> and the <code>key_location_map_maximum_put_attempts</code> described by the <a href="https://github.com/buildbarn/bb-storage/blob/0941111f29e31905e4081e6262bccf0c123940ed/pkg/proto/configuration/blobstore/blobstore.proto#L429" target="_blank" rel="noopener noreferrer"><code>LocalBlobAccessConfiguration</code></a>.</p>
+<p>The number of attempts we allow the KLM to look for a free slot is described by
+the two parameters <code>key_location_map_maximum_get_attempts</code> and the
+<code>key_location_map_maximum_put_attempts</code> described by the
+<a href="https://github.com/buildbarn/bb-storage/blob/0941111f29e31905e4081e6262bccf0c123940ed/pkg/proto/configuration/blobstore/blobstore.proto#L429" target="_blank" rel="noopener noreferrer"><code>LocalBlobAccessConfiguration</code></a>.</p>
 <h1>So, how big should the KLM be?</h1>
 <p>Given a utilization rate <code>r</code> the chance of finding the object within <code>k</code>
 iterations is <code>1-r^k</code>, we can therefore either decrease the utilization rate (by
@@ -57,11 +62,15 @@ case where the storage fits more entries than the klm is capable of inserting is
 full the algorithm would never terminate since every single slot would be
 occupied.</p>
 <p>Having a KLM that is too small for the number of iterations used is bad.</p>
-<p>This is somewhat mitigated by the insertion order where the oldest entries get pushed out first and therefore less likely to be relevant. This gives a graceful degradation for when your KLM is too small. You should choose a KLM so that the number of times you reach the maximum number of iterations is acceptably low.</p>
+<p>This is somewhat mitigated by the insertion order where the oldest entries get
+pushed out first, since they are less likely to be relevant. This gives a
+graceful degradation for when your KLM is too small. You should choose a KLM so
+that the number of times you reach the maximum number of iterations is
+acceptably low.</p>
 <h1>How rare should you keep the maximum nuber of iterations?</h1>
 <p>It should be rare, but most objects that get discarded due to the KLM being full
-will tend to be old and unused. There is however a point where it is no
-longer meaningful to have a larger KLM.</p>
+will tend to be old and unused. There is however a point where it is no longer
+meaningful to have a larger KLM.</p>
 <p>Ultimately, any time you read or write to a disk there is a risk of failure.
 Popularly this is described as happening due to cosmic radiation but more
 realistically it is due random hardware failures from imperfections in the
@@ -74,10 +83,11 @@ Digital</a>
 advertises that their Gold enterprise NVME disks has an UBER rate of 1 in 10^17,
 i.e. about once per 10 petabytes of read data so will serve as a decent
 standard.</p>
-<p>For a random CAS object of 500KB this corresponds to 1 in 10^10, giving us this neat graph.</p>
-<p><img decoding="async" loading="lazy" alt="diagram" src="https://meroton.github.io/assets/images/failure_rate-69a6d6185ef5b53dd044db62da88c274.svg" width="605" height="340" class="img_ev3q"></p>
-<p>That is, for a KLM using the recommended 16 iterations giving it more than
-4 entries per object in the storage is a waste since you are just as likely to
+<p>For a random CAS object of 125KB this corresponds to a failure rate of about 1
+in 10^11 reads, giving us this neat graph.</p>
+<p><img decoding="async" loading="lazy" alt="diagram" src="https://meroton.github.io/assets/images/failure_rate-00397007b81f92d538f10370aeb9eb29.svg" width="605" height="340" class="img_ev3q"></p>
+<p>That is, for a KLM using the recommended 16 iterations giving it more than 5
+entries per object in the storage is a waste since you are just as likely to
 fail to read the object due to disk errors as due to the KLM accidentally
 pushing it out.</p>
 <p>Similarly for 32 iterations there is no point in having more than 2 entries per
@@ -91,15 +101,20 @@ miniscule fraction of the amount of times you will get objects.</p>
 can comfort yourself with that you are far more likely to lose due to AWS
 engineer tripping on a cable in the datacenter.</p>
 <h1>How do I verify if my KLMs are properly sized?</h1>
-<p>Buildbarn exposes this in it's Prometheus metrics, the metrics:
-<code>hashing_key_location_map_get_attempts</code>,
-<code>hashing_key_location_map_get_too_many_attempts_total</code>,
-<code>hashing_key_location_map_put_iterations</code> and
-<code>hashing_key_location_map_put_too_many_iterations_total</code> are relevant here which
-will show you the trend of how many interations were required for each operation
-as well as keep track of the amount of times the algorithm failed with
-<code>too_many_iterations</code>.</p>
-<p>You can find ready made Grafana dashboards which visualizes these metrics in in
+<p>Buildbarn exposes the behavior of the hashing strategy in it's Prometheus
+metrics, they are exposed in the following metrics:</p>
+<ul>
+<li><code>hashing_key_location_map_get_attempts</code></li>
+<li><code>hashing_key_location_map_get_too_many_attempts_total</code></li>
+<li><code>hashing_key_location_map_put_iterations</code></li>
+<li><code>hashing_key_location_map_put_too_many_iterations_total</code></li>
+</ul>
+<p>These metrics exposes the required number of get and put attempts respectively
+as well as how many times we exceeded the maximum number of iterations, you can
+read the ratio between how many iterations were required to figure out how full
+the klm is. I.e. if you perform half as many attempts with 2 iterations as with
+1 iteration this implies the klm is half full.</p>
+<p>There are ready made Grafana dashboards which visualizes these metrics in in
 <a href="https://github.com/buildbarn/bb-deployments" target="_blank" rel="noopener noreferrer">bb-deployments</a>.</p>]]></content:encoded>
             <category>buildbarn</category>
         </item>
