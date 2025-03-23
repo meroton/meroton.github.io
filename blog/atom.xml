@@ -2,10 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog/</id>
     <title/>
-    <updated>2024-11-11T00:00:00.000Z</updated>
+    <updated>2025-03-24T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog/"/>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Bazel, Buildbarn and Bonanza]]></title>
+        <id>https://meroton.github.io/blog/bazel-buildbarn-and-bonanza/</id>
+        <link href="https://meroton.github.io/blog/bazel-buildbarn-and-bonanza/"/>
+        <updated>2025-03-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In the Buildbarn event at Snowflake this week, Ed Schouten presented the work on]]></summary>
+        <content type="html"><![CDATA[<p>In the Buildbarn event at Snowflake this week, Ed Schouten presented the work on
+the Bonanza project. Bonanza is a prototype for a drop in replacement Bazel with
+improvements to its communication protocols and written as client that performs
+all of its actions remotely, deduplicated and cacheable.</p>
+<h1>How is it different from Bazel?</h1>
+<p>Bazel is written in an interesting manner. It is designed from the ground up to
+represent a stable description of a build that is reproducible from any
+developer's machine. Any developer can check out the same source code ask Bazel
+to analyze it and get the exact commands which Bazel would run to perform the
+build.</p>
+<p>This involves a lot of computation: Resolving bazel modules, downloading
+repository rules, executing them, analyzing the <code>.bzl</code> and <code>BUILD.bazel</code> files,
+and finally executing the actions themselves.</p>
+<p>Bazel internally represents these computation steps as pure functions returning
+deterministic values from a stable key, internally represented as <code>SkyFunctions</code>
+returning <code>SkyValues</code> from <code>SkyKeys</code>.</p>
+<p>A <code>SkyFunction</code> should return the same <code>SkyValue</code> given the same <code>SkyKey</code> which
+makes it a good candidate for being computed only once and have the result
+cached and fed throught to the next step. But peculiarly only the action
+execution itself has been offloaded to remote cache and execution.</p>
+<p><img decoding="async" loading="lazy" alt="cache all the things" src="https://meroton.github.io/assets/images/all_the_things-49c295edfd8fdfa47bb93be35ebfa40b.webp" width="842" height="998" class="img_ev3q"></p>
+<p>This is what Bonanza attempts to resolve. Instead of having all of that state
+computed and represented locally, repeated by each developer and discarded
+whenever a flag changes, Bonanza is designed from the ground up to offload all
+computations, downloads, and analysis to a remote cacheable system. This
+essentially reduces the client side to a very light weight program with the
+primary purpose of scanning the source code for modifications and uploading any
+local changes.</p>
+<h1>What's the current state?</h1>
+<p>The project is still in an early state prototype state. In the presentation Ed
+demonstrated how far the prototype has come, and it was very impressive. The
+Bonanza client as of today is capable of analyzing the bb-storage codebase.</p>
+<p>There is still a lot remaining before it's a production ready system but it is
+very impressive progress. Bonanza is capable of running the full <code>bzlmod</code>
+resolution, fetching all relevant repository rules from upstream, run those
+repository rules, and analyzing the resulting codebase, basically performing
+everything a Bazel <code>cquery</code> does, all with fully remote and cacheable manner.</p>
+<p>For shops which lean heavily into remote caching and execution the remaining
+local load is often the bottleneck for your builds, the ability to offload the
+remaining pieces to your build cluster may be the next evolution of your build
+system.</p>]]></content>
+        <author>
+            <name>Benjamin Ingberg</name>
+        </author>
+        <category label="buildbarn" term="buildbarn"/>
+        <category label="bazel" term="bazel"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Understanding the KLM]]></title>
         <id>https://meroton.github.io/blog/understanding-the-klm/</id>
