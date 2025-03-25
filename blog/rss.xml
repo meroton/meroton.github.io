@@ -15,14 +15,15 @@
             <pubDate>Mon, 24 Mar 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[In the Buildbarn event at Snowflake this week, Ed Schouten presented the work on]]></description>
             <content:encoded><![CDATA[<p>In the Buildbarn event at Snowflake this week, Ed Schouten presented the work on
-the Bonanza project. Bonanza is a prototype for a drop in replacement Bazel with
-improvements to its communication protocols and written as client that performs
+the [Bonanza project]. Bonanza is a prototype for a drop in replacement Bazel with
+improvements to its communication protocols and written as a client that performs
 all of its actions remotely, deduplicated and cacheable.</p>
+<p><a href="https://github.com/buildbarn/bonanza" target="_blank" rel="noopener noreferrer">bonanza project</a></p>
 <h1>How is it different from Bazel?</h1>
 <p>Bazel is written in an interesting manner. It is designed from the ground up to
 represent a stable description of a build that is reproducible from any
 developer's machine. Any developer can check out the same source code ask Bazel
-to analyze it and get the exact commands which Bazel would run to perform the
+to analyze it and get the exact commands Bazel would run to perform the
 build.</p>
 <p>This involves a lot of computation: Resolving bazel modules, downloading
 repository rules, executing them, analyzing the <code>.bzl</code> and <code>BUILD.bazel</code> files,
@@ -32,7 +33,7 @@ deterministic values from a stable key, internally represented as <code>SkyFunct
 returning <code>SkyValues</code> from <code>SkyKeys</code>.</p>
 <p>A <code>SkyFunction</code> should return the same <code>SkyValue</code> given the same <code>SkyKey</code> which
 makes it a good candidate for being computed only once and have the result
-cached and fed throught to the next step. But peculiarly only the action
+cached and fed through to the next step. But peculiarly only the action
 execution itself has been offloaded to remote cache and execution.</p>
 <p><img decoding="async" loading="lazy" alt="cache all the things" src="https://meroton.github.io/assets/images/all_the_things-49c295edfd8fdfa47bb93be35ebfa40b.webp" width="842" height="998" class="img_ev3q"></p>
 <p>This is what Bonanza attempts to resolve. Instead of having all of that state
@@ -51,7 +52,7 @@ very impressive progress. Bonanza is capable of running the full <code>bzlmod</c
 resolution, fetching all relevant repository rules from upstream, run those
 repository rules, and analyzing the resulting codebase, basically performing
 everything a Bazel <code>cquery</code> does, all with fully remote and cacheable manner.</p>
-<p>For shops which lean heavily into remote caching and execution the remaining
+<p>For shops which lean heavily on remote caching and execution the remaining
 local load is often the bottleneck for your builds, the ability to offload the
 remaining pieces to your build cluster may be the next evolution of your build
 system.</p>]]></content:encoded>
