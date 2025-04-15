@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LVF8V72WEQ"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-LVF8V72WEQ",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.c773db27.css">
-<script src="/assets/js/runtime~main.b4697178.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.1cd637fe.js" defer="defer"></script>
 <script src="/assets/js/main.0e82f26d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -62,11 +62,11 @@ then the object will be attached/moved the first time and then moved again and
 again and again, detaching it from the previous mountpoint each time.</p>
 <p>This is where we start to implement &quot;unmountat&quot;,
 the idea is to</p>
-<p>A1: pick up the mount from the directory
-A2: delete the mount</p>
-<p>B1: pick up the mount from the directory
-B2: move it somewhere else
-B3: unmount it from there</p>
+<p>A1: pick up the mount from the directory<br>
+<!-- -->A2: delete the mount</p>
+<p>B1: pick up the mount from the directory<br>
+<!-- -->B2: move it somewhere else<br>
+<!-- -->B3: unmount it from there</p>
 <p>C1: emulate <code>umountat</code> with <code>fchdir</code> + <code>umount</code></p>
 <p>The first is what we would like to do, but it does not work.
 The second is a half-measure that allows us to use a well-known absolute path
