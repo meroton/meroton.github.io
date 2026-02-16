@@ -4,10 +4,22 @@
         <title></title>
         <link>https://meroton.github.io/blog/</link>
         <description></description>
-        <lastBuildDate>Mon, 24 Mar 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Feb 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[LiTHe Kod event 2026-02-17]]></title>
+            <link>https://meroton.github.io/blog/lithekod-2026-feb/</link>
+            <guid>https://meroton.github.io/blog/lithekod-2026-feb/</guid>
+            <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Welcome to a joint Meroton and LiTHe Kod evening Tuesday 17 February 2026 at 17:15 in Ada Lovelace, Linköpings Universitet.]]></description>
+            <content:encoded><![CDATA[<p>Welcome to a joint Meroton and <a href="https://lithekod.se/" target="_blank" rel="noopener noreferrer">LiTHe Kod</a> evening Tuesday 17 February 2026 at 17:15 in Ada Lovelace, Linköpings Universitet.</p>
+<p>Meroton will present how to scale build systems in larger coorperations, with focus on <a href="https://bazel.build/" target="_blank" rel="noopener noreferrer">Bazel</a>, <a href="https://github.com/buildbarn" target="_blank" rel="noopener noreferrer">Buildbarn</a> and more.
+After the presentation, you will have the opportunity to try these technologies yourselves.</p>
+<p>Please <a href="https://forms.gle/G6i4FhjEAnKANGSx8" target="_blank" rel="noopener noreferrer">register here</a>, to make sure we have enough food, or just come by and listen.</p>]]></content:encoded>
+            <category>lithekod</category>
+        </item>
         <item>
             <title><![CDATA[Bazel, Buildbarn and Bonanza]]></title>
             <link>https://meroton.github.io/blog/bazel-buildbarn-and-bonanza/</link>
