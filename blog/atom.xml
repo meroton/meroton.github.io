@@ -339,7 +339,7 @@ proper care when sizing the KLM and the number of KLM attempts.</p>
 <p>If you are just looking for a ballpark number to get you started, set the number
 of get attempts to 16 and the number of put attempts to 64 and use the following
 table.</p>
-<table><thead><tr><th></th><th>CAS</th><th>AC</th></tr></thead><tbody><tr><td>Average Object Size</td><td>125KB</td><td>1KB</td></tr><tr><td>Storage Size</td><td>500TB</td><td>1GB</td></tr><tr><td>KLM Entries</td><td>16 000 000</td><td>4 000 000</td></tr><tr><td>KLM Size</td><td>1056MB</td><td>264MB</td></tr></tbody></table>
+<table><thead><tr><th></th><th>CAS</th><th>AC</th></tr></thead><tbody><tr><td>Average Object Size</td><td>125KB</td><td>1KB</td></tr><tr><td>Storage Size</td><td>500GB</td><td>1GB</td></tr><tr><td>KLM Entries</td><td>16 000 000</td><td>4 000 000</td></tr><tr><td>KLM Size</td><td>1056MB</td><td>264MB</td></tr></tbody></table>
 <p>These are arbitrarily chosen values which are unlikely to match your actual
 workload. I recommend reading the rest of the article to understand your
 settings and how to reason about this. You can then use the prometheus metrics
@@ -386,7 +386,7 @@ pushed out first, since they are less likely to be relevant. This gives a
 graceful degradation for when your KLM is too small. You should choose a KLM so
 that the number of times you reach the maximum number of iterations is
 acceptably low.</p>
-<h1>How rare should you keep the maximum nuber of iterations?</h1>
+<h1>How rare should you keep the maximum number of iterations?</h1>
 <p>It should be rare, but most objects that get discarded due to the KLM being full
 will tend to be old and unused. There is however a point where it is no longer
 meaningful to have a larger KLM.</p>
