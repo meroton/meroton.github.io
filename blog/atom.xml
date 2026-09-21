@@ -2,10 +2,101 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://meroton.github.io/blog/</id>
     <title/>
-    <updated>2026-08-13T00:00:00.000Z</updated>
+    <updated>2026-09-21T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://meroton.github.io/blog/"/>
     <icon>https://meroton.github.io/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[BB Portal, a Buildbarn Web UI]]></title>
+        <id>https://meroton.github.io/blog/bb-portal-ui/</id>
+        <link href="https://meroton.github.io/blog/bb-portal-ui/"/>
+        <updated>2026-09-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We have been hard at work contributing to the [BB Portal]]></summary>
+        <content type="html"><![CDATA[<p>We have been hard at work contributing to the <a href="https://github.com/buildbarn/bb-portal" target="_blank" rel="noopener noreferrer">BB Portal
+project</a>, a web interface which grants
+insight into Bazel builds and Buildbarn clusters. This blog post will showcase
+the portal and some of its features. In addition to standalone features, the
+portal integrates the web interfaces for BB Browser and BB Scheduler, providing
+a great deal of helpful data in a single place.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview<a href="https://meroton.github.io/blog/bb-portal-ui/#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview">​</a></h2>
+<p>BB Portal is a web interface for visualizing Bazel builds and Buildbarn cluster
+information. The portal processes <a href="https://bazel.build/remote/bep" target="_blank" rel="noopener noreferrer">Build Event
+Protocol</a> (BEP) data from Bazel and communicates
+with Buildbarn through the <a href="https://github.com/buildbarn/bb-storage" target="_blank" rel="noopener noreferrer">storage
+daemon</a> and
+<a href="https://github.com/buildbarn/bb-remote-execution" target="_blank" rel="noopener noreferrer">scheduler</a>.</p>
+<p>The BEP data contains information about builds, invocations, tests, and targets;
+the storage daemon shares information about objects in the Action Cache (AC) and
+Content Addressable Storage (CAS); the scheduler shares information about
+workers and execution status.</p>
+<p>An example setup of Buildbarn with the portal can be found in
+<a href="https://github.com/buildbarn/bb-deployments/" target="_blank" rel="noopener noreferrer">BB Deployments</a>:</p>
+<p><img decoding="async" loading="lazy" alt="bb-deployments-example" src="https://meroton.github.io/assets/images/bb-deployments-example-ec1cd6f648f3929661a4ec882e0dfbef.jpg" width="1052" height="271" class="img_ev3q"></p>
+<p>Much like other Buildbarn components, the portal's endpoints and services can be
+protected by configuring authentication policies and authorizers. The portal
+uses instance names to determine access.</p>
+<p>The portal runs as a stateless application which persists build events in a
+PostgreSQL database, simplifying the operational management of the application.
+If not configured for ingesting build events the portal can be deployed without
+a database.</p>
+<p>BB Portal is capable of running at large scale and will only require a handful
+of cores to serve thousands of developers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="build-event-processing">Build event processing<a href="https://meroton.github.io/blog/bb-portal-ui/#build-event-processing" class="hash-link" aria-label="Direct link to Build event processing" title="Direct link to Build event processing">​</a></h2>
+<p>BEP event data is processed and stored in the portal's database. The events can
+be published to the portal in two ways: either from an uploaded file created by
+Bazel using the <code>‑‑build_event_json_file</code> flag, or as a stream from Bazel with
+its <a href="https://bazel.build/remote/bep#build-event-service" target="_blank" rel="noopener noreferrer">Build Event Service</a>
+(BES) protocol, which sends the same BEP events over gRPC.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="invocations">Invocations<a href="https://meroton.github.io/blog/bb-portal-ui/#invocations" class="hash-link" aria-label="Direct link to Invocations" title="Direct link to Invocations">​</a></h3>
+<p>An invocation contains information relating to a single Bazel command, such as
+<code>run</code>, <code>build</code>, <code>query</code>, or <code>test</code>.</p>
+<p><img decoding="async" loading="lazy" alt="invocations-table" src="https://meroton.github.io/assets/images/invocations-table-2a5d511acba5c1d0a83c37cd73cc7033.png" width="2558" height="1416" class="img_ev3q"></p>
+<p>The portal stores the invocation data sent over by Bazel like the command line,
+logs, targets, build metrics, and more. If authentication is configured for the
+BES service, the user responsible for the invocation can be saved to the
+database and will then be linked to the invocation.</p>
+<p><img decoding="async" loading="lazy" alt="invocation-details" src="https://meroton.github.io/assets/images/invocation-details-59aec35549a79bae01f3759aae25844d.png" width="2558" height="1324" class="img_ev3q"></p>
+<p>An invocation can be associated and grouped based on metadata extracted from the
+machine running the Bazel command. This is particularly useful when running
+Bazel on a CI runner as the invocations can more easily be traced to what
+triggered it.</p>
+<p>The metadata extraction is configurable to suit different CI systems. A
+configuration specifies a set of tags and how they should be extracted from the
+machine's environment variables. In the bb-portal repository a predefined
+metadata extractor for Github Actions is available which adds tags for pull
+request, workflow, job, and action. The repository also includes example
+configurations for Gitlab CI/CD and Semaphore.</p>
+<p><img decoding="async" loading="lazy" alt="invocation-tags" src="https://meroton.github.io/assets/images/invocation-tags-174b7b0b36abd059ff2e26b7e17fd838.png" width="2466" height="1096" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="builds">Builds<a href="https://meroton.github.io/blog/bb-portal-ui/#builds" class="hash-link" aria-label="Direct link to Builds" title="Direct link to Builds">​</a></h3>
+<p>A BB Portal build is a collection of invocations, grouped by tags. Similarly to
+invocations, tag extractions are configurable. Below is an example view of the
+builds table using the Github Actions example configuration, defining tags for
+repository, pull request, and workflow.</p>
+<p><img decoding="async" loading="lazy" alt="builds" src="https://meroton.github.io/assets/images/builds-table-b35b8bbd5d77aa45650decbaf1730b43.png" width="2464" height="874" class="img_ev3q"></p>
+<p>Inspecting a specific build displays all its invocations, shown in a table and
+timeline. This allows users to more easily see all the invocations pertaining to
+a particular pull request or commit giving users a natural place to explore a CI
+run.</p>
+<p><img decoding="async" loading="lazy" alt="build-details" src="https://meroton.github.io/assets/images/build-details-51e9d23ca9a424ef6bd732d9024f2f8e.png" width="2478" height="1738" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bb-browser-integration">BB Browser integration<a href="https://meroton.github.io/blog/bb-portal-ui/#bb-browser-integration" class="hash-link" aria-label="Direct link to BB Browser integration" title="Direct link to BB Browser integration">​</a></h2>
+<p>The portal functions as a drop in replacement of BB Browser using the same URL
+schema allowing users to interactively explore actions and results and even
+compare multiple action results with each other.</p>
+<p><img decoding="async" loading="lazy" alt="input-file-tree" src="https://meroton.github.io/assets/images/input-file-tree-3a27b3cb93bc34c825b80fe60eedd670.png" width="2478" height="1140" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bb-scheduler-web-ui-integration">BB Scheduler web UI integration<a href="https://meroton.github.io/blog/bb-portal-ui/#bb-scheduler-web-ui-integration" class="hash-link" aria-label="Direct link to BB Scheduler web UI integration" title="Direct link to BB Scheduler web UI integration">​</a></h2>
+<p>The portal also functions as a drop in replacement for the BB Scheduler web UI
+using the scheduler's build queue state API to gather and visualize the same
+information.</p>
+<p><img decoding="async" loading="lazy" alt="scheduler-overview" src="https://meroton.github.io/assets/images/scheduler-overview-543fae6adc603a9f3e5aa51e05cc5564.png" width="2902" height="834" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="operations-overview" src="https://meroton.github.io/assets/images/operations-overview-8bbcde08c8d6d2932936b62a4c369a53.png" width="2492" height="1362" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="operation-details" src="https://meroton.github.io/assets/images/operation-details-dee26b7fdd1571d49f34b3728d49f29d.png" width="2492" height="1700" class="img_ev3q"></p>]]></content>
+        <author>
+            <name>Oscar Falk</name>
+        </author>
+        <category label="release" term="release"/>
+        <category label="buildbarn" term="buildbarn"/>
+        <category label="bb-portal" term="bb-portal"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Updates to Buildbarn deployment repo as of June 2026]]></title>
         <id>https://meroton.github.io/blog/bb-deployments-updates-2026-06/</id>
@@ -1247,19 +1338,5 @@ If you need a scalable solution contact us for setting up a custom Buildbarn env
         </author>
         <category label="release" term="release"/>
         <category label="buildbarn" term="buildbarn"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Purpose of the Articles]]></title>
-        <id>https://meroton.github.io/blog/about/</id>
-        <link href="https://meroton.github.io/blog/about/"/>
-        <updated>2022-02-22T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The purpose of these articles is to have a freeform area discussing ideas, technical issues, solutions and news in an indepth relaxed manner. It is not to serve as reference material, structured reference material should be available in the documentation section.]]></summary>
-        <content type="html"><![CDATA[<p>The purpose of these articles is to have a freeform area discussing ideas, technical issues, solutions and news in an indepth relaxed manner. It is not to serve as reference material, structured reference material should be available in the documentation section.</p>
-<p>The article format allows more in depth on discussions for reacurring subjects. In contrast to the documentation published articles aren't changed, if the subject requires a revisit in the future then we publish a new post and add references to the old.</p>
-<p>If you see any errors feel free to submit a pull request at github using the link below.</p>]]></content>
-        <author>
-            <name>Benjamin Ingberg</name>
-        </author>
-        <category label="meroton" term="meroton"/>
     </entry>
 </feed>
